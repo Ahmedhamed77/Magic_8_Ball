@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Magic 8 Ball</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', arial;
+            font-weight: 100;
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: 100;
+            font-size: 3em;
+        }
+
+        p {
+            margin: 0;
+            padding-top: 10px;
+        }
+
+        .eight-ball{
+            background-color: black;
+            border: 1px solid black;
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+        .answer{
+            background-color: #333;
+            border: 1px solid #333;
+            border-radius: 50%;
+            width: 50%;
+            height: 50%;
+            margin: 25% auto;
+        }
+        p#eight{
+            font-size: 4em;
+            margin: 20% auto;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        #answer{
+            color: lightblue;
+            padding: 12px;
+            letter-spacing: 1px;
+        }
+
+        button, input {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-family: 'Helvetica Neue', arial;
+            font-weight: 100;
+            letter-spacing: 2px;
+            outline: none;
+            transition: .5s font-size;
+        }
+
+        button:hover {
+            font-size: 1.4em;
+        }
+    </style>
+</head>
+<body>
+<h1>Magic 8 Ball</h1>
+<p>Type in your question:</p>
+<input type="text" id="input" />
+<div class="eight-ball">
+    <div class="answer">
+        <p id="eight">8</p>
+        <p id="answer"></p>
+    </div>
+</div>
+<button id="button">
+    Shake
+</button>
+<script>
+    let eight = document.getElementById("eight");
+    let answer = document.getElementById("answer");
+    let button = document.getElementById("button");
+    let input = document.getElementById("input");
+
+    const options = [
+        "It is certain",
+        "It is decidedly so",
+        "Without a doubt",
+        "Yes – definitely",
+        "You may rely on it",
+        "As I see it, yes",
+        "Most likely",
+        "Outlook good",
+        "Yes",
+        "Signs point to yes",
+        "Don’t count on it",
+        "My reply is no",
+        "My sources say no",
+        "Outlook not so good",
+        "Very doubtful",
+        "Reply hazy, try again",
+        "Ask again later",
+        "Better not tell you now",
+        "Cannot predict now",
+        "Concentrate and ask again"
+    ];
+
+    button.addEventListener('click', () =>{
+        if(input.value.length < 1){
+            alert("Please enter a question!")
+        }
+        else {
+            eight.innerText = "";
+            let rnd = Math.floor(Math.random() * options.length);
+            answer.innerText = options[rnd];
+        }
+    })
+</script>
+</body>
+</html>
